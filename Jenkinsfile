@@ -5,7 +5,7 @@ pipeline {
             agent any
             steps {
                 checkout scm
-                sh 'mvn test'
+                sh 'mvn compile'
             }
         }
     }
