@@ -1,12 +1,11 @@
 pipeline {
-    agent {
-        docker { image 'maven:3-alpine' }
-    }
+    agent none
     stages {
-        stage('Test') {
+        stage('Build') {
+            agent any
             steps {
                 checkout scm
-                sh 'mvn package'
+                sh 'mvn test'
             }
         }
     }
