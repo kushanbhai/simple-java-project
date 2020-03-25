@@ -3,15 +3,8 @@ pipeline {
      stages {
           stage('Build') {
              steps {
-                try{ 
                  checkout scm
                  sh 'mvn test'
-             }
-                catch(caughtError) { 
-                   deleteDir();
-                   sh 'mvn test'
-                   checkout scm
-             }
            }
          }
          stage('Test') {
