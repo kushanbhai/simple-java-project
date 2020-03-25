@@ -12,6 +12,7 @@ pipeline {
                    sh 'mvn test'
                    checkout scm
              }
+           }
          }
          stage('Test') {
              agent any
@@ -28,5 +29,5 @@ pipeline {
              }
          }  
       }
-   }
-}
+  }
+
