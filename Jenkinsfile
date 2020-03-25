@@ -9,14 +9,14 @@ pipeline {
            }
          }
          stage('Test') {
-             agent any
+             agent { docker 'maven:3-alpine' }
              steps {
                  checkout scm
                  sh 'mvn compile'
              }
          }
          stage('Deploy') {
-             agent any
+             agent { docker 'maven:3-alpine' }
              steps {
                  checkout scm
                  sh 'mvn package'
