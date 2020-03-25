@@ -7,7 +7,7 @@ pipeline {
                  checkout scm
                  sh 'mvn test'
              }
-                 catch(caughtError) { 
+                catch(caughtError) { 
                    deleteDir();
                    sh 'mvn test'
                    checkout scm
@@ -27,5 +27,6 @@ pipeline {
                  sh 'mvn package'
              }
          }  
-     }
- }
+      }
+   }
+}
