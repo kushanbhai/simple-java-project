@@ -3,6 +3,10 @@ pipeline {
      stages {
           stage('Build') {
              agent { $docker }     
+               docker {
+                 dockerfile true
+                 label 'docker'
+             }
              steps {
                  checkout scm
                  sh 'mvn test'
