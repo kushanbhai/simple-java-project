@@ -1,31 +1,15 @@
 pipeline {
-     agent any
-     stages {
-          stage('Build') {
-             agent { $docker }     
-               docker {
-                 dockerfile true
-                 label 'docker'
-             }
-             steps {
-                 checkout scm
-                 sh 'mvn test'
+    agent {
+         docker {
+            image ${myimage}
+        }
+    }
+    stages {
+         stage('Build') {
+            steps {
+                checkout scm
+                sh 'mvn test'
            }
-         }
-         stage('Test') {
-             agent { $docker }  
-             steps {
-                 checkout scm
-                 sh 'mvn compile'
-            }
-         }
-         stage('Deploy') {
-             agent { $docker }  
-             steps {
-                 checkout scm
-                 sh 'mvn package'
-             }
-         }  
-      }
-  }
-
+        }     
+    }        
+} 
