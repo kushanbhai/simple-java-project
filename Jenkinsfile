@@ -1,9 +1,8 @@
 pipeline {
-     agent {
-        docker { image 'node:7-alpine' }
-    }
-     stages {
+     agent any
+        stages {
          stage('Build') {
+              agent { docker { image 'node:7-alpine' } }
              steps {
                checkout scm
                sh 'mvn test'   
