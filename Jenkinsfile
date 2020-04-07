@@ -1,11 +1,10 @@
 pipeline {
-    agent any    
+    agent none    
     stages {
         stage('build') {
-            agent { docker 'maven:3-alpine' }
+            agent { docker 'openjdk:7' }
             steps {
-                checkout scm
-                sh 'mvn test'
+                sh 'java -version'
            }
         }   
     }
