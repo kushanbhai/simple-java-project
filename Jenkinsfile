@@ -5,7 +5,7 @@ pipeline {
         }
     }     
     stages {
-         stage('Build') {
+         stage('build') {
             steps {
                 checkout scm
                 sh 'mvn test'
