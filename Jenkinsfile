@@ -1,5 +1,5 @@
-    pipeline {
-        agent any
+pipeline {
+    agent any
         stages {
             stage('Build') {
                 agent any
@@ -8,5 +8,5 @@
                     sh 'mvn test'
                }
           }
-     }
+      }
  }
