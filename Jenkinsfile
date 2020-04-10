@@ -3,13 +3,14 @@ pipeline {
         docker {
             image '${myimage}'
         }
-    }
+    }   
     stages {
-        stage('Build') {
+        stage('build') {
             steps {
                checkout scm
                sh 'mvn test'
             }
         }
-    }
-}
+    
+    }  
+}   
