@@ -9,7 +9,7 @@ pipeline {
             steps {
                checkout scm
                sh 'mvn test'
-             }
-         }
+            }
+        }
     }
 }
