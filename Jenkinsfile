@@ -1,12 +1,12 @@
-pipeline {
-    agent none    
-    stages {
-        stage('build') {
-            agent { docker 'maven:3-alpine' }
-            steps {
-                checkout scm
-                 sh 'mvn test'
-           }
-        }   
-    }
-}    
+    pipeline {
+        agent any
+        stages {
+            stage('Build') {
+                agent any
+                steps {
+                    checkout scm
+                    sh 'mvn test'
+               }
+          }
+     }
+ }
