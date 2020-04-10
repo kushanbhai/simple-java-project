@@ -1,12 +1,15 @@
 pipeline {
-    agent any
-        stages {
-            stage('Build') {
-                agent any
-                steps {
-                    checkout scm
-                    sh 'mvn test'
-               }
-          }
-      }
- }
+    agent {
+        docker {
+            image '${myimage}'
+        }
+    }
+    stages {
+        stage('Build') {
+            steps {
+               checkout scm
+               sh 'mvn test'
+             }
+         }
+    }
+}
