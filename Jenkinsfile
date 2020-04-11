@@ -7,7 +7,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B'
+                checkout scm
+                sh 'mvn test'
             }
         }
     }
