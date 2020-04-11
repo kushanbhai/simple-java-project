@@ -11,5 +11,17 @@ pipeline {
                 sh 'mvn test'
             }
         }  
+        stage('Test') {
+             steps {
+                 checkout scm
+                 sh 'mvn compile'
+            }
+         }
+         stage('Deploy') {
+             steps {
+                 checkout scm
+                 sh 'mvn package'
+             }
+         }    
     }
 }    
