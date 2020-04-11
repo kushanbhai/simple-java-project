@@ -1,27 +1,19 @@
 pipeline {
-    agent {
-        docker {
-            image '${myimage}'
+    agent any
+    stages {
+        stage('Example Build') {
+            agent { docker 'maven:3-alpine' }
+            steps {
+                echo 'Hello, Maven'
+                sh 'mvn --version'
+            }
+        }
+        stage('Example Test') {
+            agent { docker 'openjdk:8-jre' }
+            steps {
+                echo 'Hello, JDK'
+                sh 'java -version'
+            }
         }
     }
-    stages {
-        stage('build') {
-            steps {
-                checkout scm
-                sh 'mvn test'
-            }
-        }  
-        stage('Test') {
-             steps {
-                 checkout scm
-                 sh 'mvn compile'
-            }
-         }
-         stage('Deploy') {
-             steps {
-                 checkout scm
-                 sh 'mvn package'
-             }
-         }    
-    }
-}    
+}
