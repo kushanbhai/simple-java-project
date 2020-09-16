@@ -8,7 +8,6 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        
         stage('Test') {
             agent any
             steps {
@@ -16,7 +15,6 @@ pipeline {
                 sh 'mvn compile'
             }
         }
-        
         stage('Deploy') {
             agent any
             steps {
